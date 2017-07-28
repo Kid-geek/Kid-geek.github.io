@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+    
+    <entry>
+      <title><![CDATA[碎碎念]]></title>
+      <url>%2F2017%2F07%2F29%2F%E7%A2%8E%E7%A2%8E%E5%BF%B5%2F</url>
+      <content type="text"><![CDATA[广厦万间,夜眠八尺.珍馐百味,不过一饱.]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Git从零开始]]></title>
+      <url>%2F2017%2F07%2F26%2FGit%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%2F</url>
+      <content type="text"><![CDATA[从头整理下Git流程 准备 安装Git后,创建仓库目录文件夹,打开命令行输入ssh-keygen -t rsa -C &quot;邮箱名&quot; 创建SSH密钥。 在GitHub账号设置中添加SSH许可。 ssh -T git@github.com连接GitHub 修改个人信息 git config --global user.name &quot;名字&quot; git config --global user.email &quot;邮箱&quot; 开始 git init 初始化本地仓库 git clone url 下载远程Github仓库,url为github clone链接 基本操作: git add file_name 将文件添加到缓存. *为全部文件 git status 查看项目当前状态 git status -s获得简短输出 git diff查看已写入缓存与已修改但尚未写入缓存的改动的区别. 例如修改了文件里的内容后,git status 显示你上次提交更新后的更改或者写入缓存的改动， 而 git diff 一行一行地显示这些改动具体是啥。 git commit将缓存区内容添加到仓库中.git commit -m &quot;注释&quot;可以简单说明改动. git rm file将条目从缓存区删除,包括文件本身.如果要在工作目录中保留文件用 git rm --cached git mv 命令用于移动或重命名一个文件、目录、软连接。 分支管理: git branch (branchname)创建一个新的分支 git checkout 切换分支,在切换分支时会用该分支最后提交的快照替换工作目录的内容,所以多个分支不需要多个目录. git branch列出本地分支,*为当前所在分支 git branch -d (branchname)删除分支 git merge branchname合并分支内容 查看提交历史 git log查看历史信息,可以用git log --oneline查看简明信息 简单流程 创建本地仓库目录文件夹 创建GitHub远程仓库,git clone url克隆到本地 git init # 初始化 git add README.md # 添加文件 git commit -m &quot;添加注释信息&quot; # 提交并备注信息 git push提交到远程仓库 ps.只是最最最基础的流程,分支慢慢研究了. ##最后会随着看的越来越多慢慢更新的,先熟悉下.贴两个链接: 简单命令加流程GitHub简明教程]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[设计模式-单例模式（饿汉模式or懒汉模式）]]></title>
+      <url>%2F2017%2F06%2F27%2F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%EF%BC%88%E9%A5%BF%E6%B1%89%E6%A8%A1%E5%BC%8For%E6%87%92%E6%B1%89%E6%A8%A1%E5%BC%8F%EF%BC%89%2F</url>
+      <content type="text"><![CDATA[在从头研究项目的时候发现存储配置文件字段用到了饿汗单例模式，深入研究看看。 ##单例模式单例模式就是在应用程序中只创建一个该类的对象。这个设计模式主要目的是想在整个系统中只能出现一个类的实例。比如你的软件的全局配置信息，或者是一个Factory，或是一个主控类，等等。你希望这个类在整个系统中只能出现一个实例。当然，作为一个技术负责人的你，你当然有权利通过使用非技术的手段来达到你的目的。比如：你在团队内部明文规定，“XX类只能有一个全局实例，如果某人使用两次以上，那么该人将被处于2000元的罚款！”（呵呵），你当然有权这么做。但是如果你的设计的是东西是一个类库，或是一个需要提供给用户使用的API，恐怕你的这项规定将会失效。因为，你无权要求别人会那么做。所以，这就是为什么，我们希望通过使用技术的手段来达成这样一个目的的原因。 ###饿汉模式和懒汉模式 饿汉 类加载时候就已经完成了初始化，不需要同步懒汉 类加载的时候不初始化，需要同步 懒汉模式：类加载时不初始化，因此在类加载时速度快，但运行时获取对象的速度慢。例如：12345678910public class Singleton &#123; private static Singleton singleton = null; private Singleton() &#123; &#125; //私有的构造函数，表明这个类不可能形成实例。 public static Singleton getInstance() &#123; //借助getInstance()让其形成实例。 if (singleton== null) &#123; singleton= new Singleton(); &#125; return singleton; &#125;&#125; 注意： 即然这个类是不可能形成实例，那么，我们需要一个静态的方式让其形成实例：getInstance()。注意这个方法是在new自己，因为其可以访问私有的构造函数，所以他是可以保证实例被创建出来的。 在getInstance()中，先做判断是否已形成实例，如果已形成则直接返回，否则创建实例。 取实例时，只需要使用Singleton.getInstance()就行了。 饿汉模式：在类加载时就完成了初始化，所以类加载较慢，但获取对象的速度快例如：12345678910111213public class EagerSingleton &#123; private static EagerSingleton instance = new EagerSingleton();//静态私有成员，已初始化 private EagerSingleton() &#123; //私有构造函数 &#125; //静态，不用同步（类加载时已初始化，不会有多线程的问题） public static EagerSingleton getInstance() &#123; return instance; &#125;&#125; ##单例模式的多线程多线程：双重检查123456789101112131415public class Singleton&#123; private volatile static Singleton singleton = null; private Singleton() &#123; &#125; public static Singleton getInstance() &#123; if (singleton== null) &#123; synchronized (Singleton.class) &#123; if (singleton== null) &#123; singleton= new Singleton(); &#125; &#125; &#125; return singleton; &#125;&#125; 第一个条件判断实例是否已经创建,如果创建了则不需要同步,直接返回就好,否则开始同步线程. 第二个条件判断,如果被同步的线程中,有一个线程创建了对象,那么别的线程就不用再创建了. 注意:此处volatile的作用 这个变量不会在多个线程中存在复本，直接从内存读取。 这个关键字会禁止指令重排序优化。也就是说，在 volatile 变量的赋值操作后面会有一个内存屏障（生成的汇编代码上），读操作不会被重排序到内存屏障之前。 还有一种《Effective Java》推荐方式静态内部类的方法123456789public class Singleton &#123; private static class SingletonHolder &#123; private static final Singleton INSTANCE = new Singleton(); &#125; private Singleton ()&#123;&#125; public static final Singleton getInstance() &#123; return SingletonHolder.INSTANCE; &#125; &#125; 这种写法仍然使用JVM本身机制保证了线程安全问题；由于 SingletonHolder 是私有的，除了 getInstance() 之外没有办法访问它，因此它是懒汉式的；同时读取实例的时候不会进行同步，没有性能缺陷；也不依赖 JDK 版本。 小结：静态内部类还是不太懂，后续慢慢思考一下。 参考资料：深入浅出单实例SINGLETON设计模式 http://coolshell.cn/articles/265.html如何正确地写出单例模式 http://wuchong.me/blog/2014/08/28/how-to-correctly-write-singleton-pattern/]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[线程与进程简单理解]]></title>
+      <url>%2F2017%2F05%2F09%2F%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3%2F</url>
+      <content type="text"><![CDATA[由于线程和进程比较抽象，不好理解，看到篇文章，简单记录下，方便理解。 计算机的核心是CPU，它承担了所有的计算任务。它就像一座工厂，时刻在运行。 假定工厂的电力有限，一次只能供给一个车间使用。也就是说，一个车间开工的时候，其他车间都必须停工。背后的含义就是，单个CPU一次只能运行一个任务。 进程就像工厂的车间，它代表CPU所能处理的单个任务。车间可以有很多个，任一时刻，CPU总是运行一个进程，其他进程处于非运行状态。 一个车间里，可以有很多工人。他们协同完成一个任务。线程就好比车间里的工人。一个进程可以包括多个线程。 车间的空间是工人们共享的，比如许多房间是每个工人都可以进出的。这象征一个进程的内存空间是共享的，每个线程都可以使用这些共享内存。 可是，每间房间的大小不同，有些房间最多只能容纳一个人，比如厕所。里面有人的时候，其他人就不能进去了。这代表一个线程使用某些共享内存时，其他线程必须等它结束，才能使用这一块内存。 一个防止他人进入的简单方法，就是门口加一把锁。先到的人锁上门，后到的人看到上锁，就在门口排队，等锁打开再进去。这就叫“互斥锁”（Mutual exclusion，缩写 Mutex），防止多个线程同时读写某一块内存区域。 还有些房间，可以同时容纳n个人，比如厨房。也就是说，如果人数大于n，多出来的人只能在外面等着。这好比某些内存区域，只能供给固定数目的线程使用。 这时的解决方法，就是在门口挂n把钥匙。进去的人就取一把钥匙，出来时再把钥匙挂回原处。后到的人发现钥匙架空了，就知道必须在门口排队等着了。这种做法叫做“信号量”（Semaphore），用来保证多个线程不会互相冲突。不难看出，mutex是semaphore的一种特殊情况（n=1时）。也就是说，完全可以用后者替代前者。但是，因为mutex较为简单，且效率高，所以在必须保证资源独占的情况下，还是采用这种设计。 总结：操作系统的设计，因此可以归结为三点：（1）以多进程形式，允许多个任务同时运行；（2）以多线程形式，允许单个任务分成不同的部分运行；（3）提供协调机制，一方面防止进程之间和线程之间产生冲突，另一方面允许进程之间和线程之间共享资源。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[java 中的序列化]]></title>
+      <url>%2F2017%2F04%2F19%2Fjava%20%E4%B8%AD%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%2F</url>
+      <content type="text"><![CDATA[序列化是干什么的？ 简单说就是为了保存在内存中的各种对象的状态，并且可以把保存的对象状态再读出来。虽然你可以用你自己的各种各样的方法来保存Object States，但是Java给你提供一种应该比你自己好的保存对象状态的机制,那就是序列化。 什么情况下需要序列化1.当你想把的内存中的对象保存到一个文件中或者数据库中时候；2.当你想用套接字在网络上传送对象的时候；3.当你想通过RMI传输对象的时候； 当对一个对象实现序列化时，究竟发生了什么？在没有序列化前，每个保存在堆（Heap）中的对象都有相应的状态（state），即实例变量（instance ariable）比如：123Foo myFoo = new Foo(); myFoo .setWidth(37); myFoo.setHeight(70); 当通过下面的代码序列化之后，MyFoo对象中的width和Height实例变量的值（37，70）都被保存到foo.ser文件中，这样以后又可以把它 从文件中读出来，重新在堆中创建原来的对象。当然保存时候不仅仅是保存对象的实例变量的值，JVM还要保存一些小量信息，比如类的类型等以便恢复原来的对象。 123FileOutputStream fs = new FileOutputStream(&quot;foo.ser&quot;);ObjectOutputStream os = new ObjectOutputStream(fs); os.writeObject(myFoo); 比如123456789101112131415161718192021222324252627282930import java.io.*; public class Box implements Serializable &#123; private int width; private int height; public void setWidth(int width)&#123; this.width = width; &#125; public void setHeight(int height)&#123; this.height = height; &#125; public static void main(String[] args)&#123; Box myBox = new Box(); myBox.setWidth(50); myBox.setHeight(30); try&#123; FileOutputStream fs = new FileOutputStream(&quot;foo.ser&quot;); ObjectOutputStream os = new ObjectOutputStream(fs); os.writeObject(myBox); os.close(); &#125;catch(Exception ex)&#123; ex.printStackTrace(); &#125; &#125; &#125; 相关注意事项1.当一个父类实现序列化，子类自动实现序列化，不需要显式实现Serializable接口；2.当一个对象的实例变量引用其他对象，序列化该对象时也把引用对象进行序列化；3.并非所有的对象都可以序列化。 总结就像你寄一箱饼干，因为体积太大，就全压成粉末紧紧地一包寄出去，这就是序列化的作用。只不过JAVA的序列化是可以完全还原的。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[接口详解]]></title>
+      <url>%2F2017%2F04%2F08%2F%E6%8E%A5%E5%8F%A3%E8%AF%A6%E8%A7%A3%2F</url>
+      <content type="text"><![CDATA[接口详解 接口的概念类是一种具体实现体，而接口定义了一种规范，接口定义了某一批类所需要遵守的规范，接口不关心这些类的内部状态数据，也不关心类里的实现细节，只规定了这批类里必须提供某些方法。 可见，接口不提供任何实现方法。接口体现的是规范和实现分离的哲学。 接口定义注意事项 接口可以有多个直接父接口，支持多继承，但接口只能继承接口，不能继承类。 接口里不能包含构造器和初始化块定义。接口里可以包含成员变量（只能是静态常量）、方法（只能是抽象实例方法、类方法或默认方法）、内部类（包括内部接口、枚举）。 系统自动为接口里定义的成员变量增加public static final修饰符。 接口的使用接口的主要用途： 定义变量，也可用于强制类型转换。 调用接口中定义的常量 被其他类实现 接口和抽象类设计目的上的差别:接口体现的是一种规范，是多个模块间的耦合标准。接口类似于整个系统的“总纲”，因此，接口不应该经常被改写。抽象类则不一样，体现的是一种模板式设计。可以在后期更加完善。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[疯狂JAVA摘句]]></title>
+      <url>%2F2017%2F03%2F20%2F%E7%96%AF%E7%8B%82JAVA%E6%91%98%E5%8F%A5%2F</url>
+      <content type="text"><![CDATA[真正优秀的程序员当然可以使用IDE工具，但真正的程序员，即使使用vi、记事本也一样可以完成非常优秀的项目。正确对待IDE工具的态度是：可以使用IDE工具，但绝不可依赖IDE工具。学习阶段，前期不要使用IDE工具；开发阶段，使用IDE工具。真正技术掌握了，无论用什么IDE工具都得心应手。 对于IDE工具，业内有一个说法：IDE工具会加快高手的开发效率，但会使初学者更白痴。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Git命令实践]]></title>
+      <url>%2F2017%2F03%2F19%2FGit%E5%91%BD%E4%BB%A4%E5%AE%9E%E8%B7%B5%2F</url>
+      <content type="text"><![CDATA[Git入门标签（空格分隔）： 基本操作 git init – 初始化仓库使用Git仓库管理必须先初始化仓库。1234mkdir Git-firstcd Git-firstgit initInitialized empty Git repository in /Volumes/CODE/Git-tutorial/.git/ git status – 查看仓库状态git status查看仓库状态。123456$git statusOn branch masterInitial commitnothing to commit (create/copy files and use &quot;git add&quot; to track) 提示显示正处在: master分支处，且没有任何文件。创建第一个文件READEME.md12345678910111213$touch READE.md$Git-tutorial ZH$ git statusOn branch masterInitial commitUntracked files: (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed) READE.mdnothing added to commit but untracked files present (use &quot;git add&quot; to track) 可以在Untracked files：中看到这个文件，且并没有添加到暂存区 git add – 向暂存区添加文件要想让文件成为Git仓库管理的对象，需要用git add命令添加到暂存区。暂存区是提交前的一个临时区域。12345678910$ git add README.md $ git statusOn branch masterInitial commitChanges to be committed: (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage) new file: README.md 可以看到READEME.md文件显示在Changes to be committed中了。 git commit – 保存仓库的历史记录git commit将当前暂存区中的文件实际保存到仓库的历史记录中。 记叙一行提交信息1234$ git commit -m &quot;First Commit&quot;[master (root-commit) a6ce11d] First Commit 1 file changed, 0 insertions(+), 0 deletions(-) create mode 100644 README.md -m参数后的“First Commit”成为提交信息，是对这个提交的描述。 记叙详细提交信息]]></content>
+    </entry>
+
+    
+  
+  
+</search>
