@@ -10,6 +10,13 @@
 
     
     <entry>
+      <title><![CDATA[HttpClient基本使用]]></title>
+      <url>%2F2017%2F08%2F03%2FHttpClient%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%2F</url>
+      <content type="text"><![CDATA[做了一个月爬虫了,从头整理下吧,方便以后查询使用.123456789101112131415161718192021222324252627import org.apache.http.client.methods.CloseableHttpResponse;import org.apache.http.client.methods.HttpGet;import org.apache.http.impl.client.CloseableHttpClient;import org.apache.http.impl.client.HttpClients;public class HttpClientDemo &#123; public static void main(String[] args) throws Exception &#123; // 创建默认的客户端实例 CloseableHttpClient httpClient = HttpClients.createDefault(); // 创建get请求实例 HttpGet httpget = new HttpGet(&quot;http://www.baidu.com&quot;); System.out.println(&quot;executing request &quot; + httpget.getURI()); try &#123; // 客户端执行get请求 返回响应 CloseableHttpResponse response = httpClient.execute(httpget); // 服务器响应状态行 System.out.println(response.getStatusLine().toString()); &#125; finally &#123; httpClient.close(); &#125; &#125;&#125; 简单理解下:CloseableHttpClient httpClient = HttpClients.createDefault(); 上述代码我们可以理解为我先打开了一个“浏览器”，注意，并不是真正意义上的浏览器，只是进行了这步操作，表明我们马上就可以访问网页了。 HttpGet httpget = new HttpGet(&quot;http://www.baidu.com&quot;); 上述代码就表示了我们请求了一个页面，用的是get方法，对于请求页面使用的是哪一种方法，一般来说，只有在进行登录页面的时，我们会使用Post方法。我们可以通过chrome开发者工具来了解对于这个页面是使用了哪个方法。 我们理解为上面两个步骤就是打开一个浏览器，然后在地址栏输入了一个网址。 CloseableHttpResponse response = httpClient.execute(httpget);上述代码相当于我们此时在浏览器中按下了回车，URL资源所在的服务器就会开始给你返回这个网页的数据。包括请求头，消息实体等等.最后在finally释放资源. 参考自:Hg_Yi]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[碎碎念]]></title>
       <url>%2F2017%2F07%2F29%2F%E7%A2%8E%E7%A2%8E%E5%BF%B5%2F</url>
       <content type="text"><![CDATA[广厦万间,夜眠八尺.珍馐百味,不过一饱.]]></content>
