@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[读取XML内容]]></title>
+      <url>%2F2017%2F08%2F15%2F%E8%AF%BB%E5%8F%96XML%E5%86%85%E5%AE%B9%2F</url>
+      <content type="text"><![CDATA[很多时候需要为程序设置全局变量或者经常需要修改的量,这时候放到XML配置文件里就很有必要了 需要用的的包 dom4j 下载地址代码如下 123456789101112131415161718192021222324252627282930313233343536373839import java.io.File;import java.util.Iterator;import java.util.List;import org.dom4j.Document;import org.dom4j.Element;import org.dom4j.io.SAXReader;public class ReadXMLDemo &#123; public static void main(String[] args) throws Exception &#123; // 读取XML文件,获得document对象 SAXReader reader = new SAXReader(); Document document = reader.read(new File(&quot;src/test.xml&quot;)); // 取得节点对象 Element root = document.getRootElement();// 取得根节点 Element books = root.element(&quot;Books&quot;); // 取得该节点下 &quot;Books&quot; 子节点 Element book = books.element(&quot;Book&quot;); System.out.println(book.getName() + book.getText()); // getName()获取该节点名字,getText()取得该节点内容 System.out.println(book.attribute(&quot;id&quot;).getText()); //book.attribute(&quot;id&quot;)获取该节点下属性为id的内容 // 遍历子节点下所有元素 List&lt;Element&gt; bookList = book.elements(); for (Element element : bookList) &#123; System.out.println(element.getName() + &quot; :&quot; + element.getText()); &#125; //遍历子节点下子节点所有元素 for (Iterator it = books.elementIterator(); it.hasNext();) &#123; Element element = (Element) it.next(); List&lt;Element&gt; booksList = element.elements(); for (Element element2 : booksList) &#123; System.out.println(element2.getName() + &quot;: &quot; + element2.getText()); &#125; &#125; &#125;&#125; XML文件如下:123456789101112131415161718192021222324&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;Info&gt; &lt;Books&gt; &lt;Book id=&quot;001&quot;&gt; &lt;Name&gt;Java&lt;/Name&gt; &lt;Price&gt;50.0&lt;/Price&gt; &lt;/Book&gt; &lt;Book id=&quot;002&quot;&gt; &lt;Name&gt;Python&lt;/Name&gt; &lt;Price&gt;30.0&lt;/Price&gt; &lt;/Book&gt; &lt;/Books&gt; &lt;Phones&gt; &lt;Phone id=&quot;001&quot;&gt; &lt;Name&gt;三星S8&lt;/Name&gt; &lt;Price&gt;5588.0&lt;/Price&gt; &lt;/Phone&gt; &lt;/Phones&gt; &lt;/Info&gt;]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[eclipse常用快捷键]]></title>
       <url>%2F2017%2F08%2F14%2Feclipse%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%2F</url>
       <content type="text"><![CDATA[总结下常用快捷键吧,偶尔会忘ALT + Shift + J 文档注释Ctr + Shift + R 打开资源 (很好用)Alt + Shift + R 重命名 (很好用)Ctr + Shift + O 快速导入所有包 (很好用)Ctr + Shift + F 格式化代码Alt + / 代码提示Ctr + 1 错误修正建议Ctr + D 删除当前行Ctr + / 注释当前行,再按则取消注释]]></content>
