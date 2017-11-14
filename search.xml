@@ -3,6 +3,20 @@
   
     
     <entry>
+      <title><![CDATA[requests下载pdf]]></title>
+      <url>%2F2017%2F11%2F15%2F%E4%B8%8B%E8%BD%BDpdf%2F</url>
+      <content type="text"><![CDATA[requests下载pdf123456import requestsresponse = requests.get(url,stream=&quot;TRUE&quot;)with open(&apos;C:\\Users\\jojo\\Desktop&apos;+file_name+&apos;.pdf&apos;, &apos;wb&apos;) as file: for data in response.iter_content(): file.write(data) file.close()]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[MySQL导出EXCLE文件]]></title>
+      <url>%2F2017%2F10%2F07%2FMySQL%E5%AF%BC%E5%87%BAEXCLE%E6%96%87%E4%BB%B6%2F</url>
+      <content type="text"><![CDATA[MySQL导出EXCLE文件一般用命令导出会遇到问题:The MySQL server is running with the --secure-file-priv option so it cannot execute this statement报错原因：secure_file_priv设置了指定目录，需要在指定的目录下进行数据导出 Windows下my.ini所在路径:C:\ProgramData\MySQL\MySQL Server 5.7 secure_file_priv这个变量不支持动态修改，官方文档写明了，需要重启生效 命令:导出文件SELECT * FROM MY_TABLE INTO OUTFILE &#39;FILE_PATH&#39;;导入文件LOAD DATA INFILE &#39;FILE_PATH&#39; INTO TABLE MY_TABLE; 参考资料: MySQL配置修改mysql导出导入文件问题整理]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[selenium设置chrome和phantomjs的请求头信息]]></title>
       <url>%2F2017%2F09%2F16%2Fselenium%E8%AE%BE%E7%BD%AEchrome%E5%92%8Cphantomjs%E7%9A%84%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%BF%A1%E6%81%AF%2F</url>
       <content type="text"><![CDATA[目录一：selenium设置phantomjs请求头：二：selenium设置chrome请求头：三：selenium设置chrome–cookie：四：selenium设置phantomjs-图片不加载： selenium设置phantomjs请求头：1234567891011from selenium import webdriverfrom selenium.webdriver.common.desired_capabilities import DesiredCapabilitiesdcap = dict(DesiredCapabilities.PHANTOMJS)dcap[&quot;phantomjs.page.settings.userAgent&quot;] = (&quot;Mozilla/5.0 (Linux; Android 5.1.1; Nexus 6 Build/LYZ28E) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.23 Mobile Safari/537.36&quot;)driver = webdriver.PhantomJS(desired_capabilities=dcap)driver.get(&quot;https://httpbin.org/get?show_env=1&quot;)driver.get_screenshot_as_file(&apos;01.png&apos;)driver.quit() selenium设置chrome请求头：1234567891011from selenium import webdriver# 进入浏览器设置options = webdriver.ChromeOptions()# 设置中文options.add_argument(&apos;lang=zh_CN.UTF-8&apos;)# 更换头部options.add_argument(&apos;user-agent=&quot;Mozilla/5.0 (iPod; U; CPU iPhone OS 2_1 like Mac OS X; ja-jp) AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Mobile/5F137 Safari/525.20&quot;&apos;)browser = webdriver.Chrome(chrome_options=options)url = &quot;https://httpbin.org/get?show_env=1&quot;browser.get(url)browser.quit() selenium设置chrome–cookie：cookie用于模拟登陆 123456789101112131415from selenium import webdriverbrowser = webdriver.Chrome()url = &quot;https://www.baidu.com/&quot;browser.get(url)# 通过js新打开一个窗口newwindow=&apos;window.open(&quot;https://www.baidu.com&quot;);&apos;# 删除原来的cookiebrowser.delete_all_cookies()# 携带cookie打开browser.add_cookie(&#123;&apos;name&apos;:&apos;ABC&apos;,&apos;value&apos;:&apos;DEF&apos;&#125;)# 通过js新打开一个窗口browser.execute_script(newwindow)input(&quot;查看效果&quot;)browser.quit() selenium设置phantomjs-图片不加载：12345678910111213141516from selenium import webdriveroptions = webdriver.ChromeOptions()prefs = &#123; &apos;profile.default_content_setting_values&apos;: &#123; &apos;images&apos;: 2 &#125;&#125;options.add_experimental_option(&apos;prefs&apos;, prefs)browser = webdriver.Chrome(chrome_options=options)# browser = webdriver.Chrome()url = &quot;http://image.baidu.com/&quot;browser.get(url)input(&quot;是否有图&quot;)browser.quit() 转载自URl-team]]></content>
