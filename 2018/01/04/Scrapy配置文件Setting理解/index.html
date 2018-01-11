@@ -87,19 +87,16 @@
 
 
 
-<meta name="description" content="Setting.py 选项理解并发数控制
-并发是指同时处理的request的数量。其有全局限制和局部(每个网站)的限制。Scrapy默认的全局并发限制对同时爬取大量网站的情况并不适用，因此您需要增加这个值。 增加多少取决于您的爬虫能占用多少CPU。 一般开始可以设置为 100 。不过最好的方式是做一些测试，获得Scrapy进程占取CPU与并发数的关系。 为了优化性能，您应该选择一个能使CPU占用率">
+<meta name="description" content="Setting.py 选项理解">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Scrapy配置文件Setting理解">
 <meta property="og:url" content="http://yoursite.com/2018/01/04/Scrapy配置文件Setting理解/index.html">
 <meta property="og:site_name" content="Kid">
-<meta property="og:description" content="Setting.py 选项理解并发数控制
-并发是指同时处理的request的数量。其有全局限制和局部(每个网站)的限制。Scrapy默认的全局并发限制对同时爬取大量网站的情况并不适用，因此您需要增加这个值。 增加多少取决于您的爬虫能占用多少CPU。 一般开始可以设置为 100 。不过最好的方式是做一些测试，获得Scrapy进程占取CPU与并发数的关系。 为了优化性能，您应该选择一个能使CPU占用率">
-<meta property="og:updated_time" content="2018-01-11T06:21:16.494Z">
+<meta property="og:description" content="Setting.py 选项理解">
+<meta property="og:updated_time" content="2018-01-11T06:49:15.303Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Scrapy配置文件Setting理解">
-<meta name="twitter:description" content="Setting.py 选项理解并发数控制
-并发是指同时处理的request的数量。其有全局限制和局部(每个网站)的限制。Scrapy默认的全局并发限制对同时爬取大量网站的情况并不适用，因此您需要增加这个值。 增加多少取决于您的爬虫能占用多少CPU。 一般开始可以设置为 100 。不过最好的方式是做一些测试，获得Scrapy进程占取CPU与并发数的关系。 为了优化性能，您应该选择一个能使CPU占用率">
+<meta name="twitter:description" content="Setting.py 选项理解">
 
 
 
@@ -390,7 +387,8 @@
       
 
       
-        <h1 id="Setting-py-选项理解"><a href="#Setting-py-选项理解" class="headerlink" title="Setting.py 选项理解"></a>Setting.py 选项理解</h1><h2 id="并发数控制"><a href="#并发数控制" class="headerlink" title="并发数控制"></a>并发数控制</h2><blockquote>
+        <h1 id="Setting-py-选项理解"><a href="#Setting-py-选项理解" class="headerlink" title="Setting.py 选项理解"></a>Setting.py 选项理解</h1><a id="more"></a>
+<h2 id="并发数控制"><a href="#并发数控制" class="headerlink" title="并发数控制"></a>并发数控制</h2><blockquote>
 <p>并发是指同时处理的request的数量。其有全局限制和局部(每个网站)的限制。<br>Scrapy默认的全局并发限制对同时爬取大量网站的情况并不适用，因此您需要增加这个值。 增加多少取决于您的爬虫能占用多少CPU。 一般开始可以设置为 100 。不过最好的方式是做一些测试，获得Scrapy进程占取CPU与并发数的关系。 为了优化性能，您应该选择一个能使CPU占用率在80%-90%的并发数<br><strong><code>CONCURRENT_REQUESTS = 100，scrapy中默认的并发数是32</code></strong></p>
 </blockquote>
 <h2 id="默认每个域名的并发数：8"><a href="#默认每个域名的并发数：8" class="headerlink" title="默认每个域名的并发数：8"></a>默认每个域名的并发数：8</h2><blockquote>
