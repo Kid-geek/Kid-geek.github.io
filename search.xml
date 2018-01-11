@@ -10,6 +10,20 @@
 
     
     <entry>
+      <title><![CDATA[Python发送邮件]]></title>
+      <url>%2F2018%2F01%2F12%2FPython%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6%2F</url>
+      <content type="text"><![CDATA[考虑到后期可以做自动发送邮件提醒, 记录一下Python发送邮件 开启QQ邮箱的设置-账户里SMTP服务,会得到一个授权码 123456789101112131415161718192021# coding=utf-8import smtplibfrom email.mime.text import MIMETextmsg_from = '280705132@qq.com' # 发送方邮箱passwd = ' ' # 填入发送方邮箱的授权码msg_to = '280705132@qq.com' # 收件人邮箱subject = "python邮件测试" # 主题content = "这是我使用python smtplib及email模块发送的邮件"msg = MIMEText(content)msg['Subject'] = subjectmsg['From'] = msg_frommsg['To'] = msg_totry: s = smtplib.SMTP_SSL("smtp.qq.com", 465) s.login(msg_from, passwd) s.sendmail(msg_from, msg_to, msg.as_string()) print("发送成功")except smtplib.SMTPException: print("发送失败")]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Scrapy拉勾]]></title>
+      <url>%2F2018%2F01%2F12%2FScrapy%E6%8B%89%E5%8B%BE%2F</url>
+      <content type="text"><![CDATA[爬取拉勾网招聘信息抓列表后台查看到内容是AJAX生成的,并且POST不同URL获取到不同内容, 但表单参数只作为控制页码使用.参数:fd = {&#39;first&#39;: &#39;false&#39;, &#39;pn&#39;: 1, &#39;kd&#39;: &#39;java&#39;}其中 pn控制页码 拉勾写死在最多显示30页内容 每页15条 kd控制职位关键字 输入要搜索的职位名称即可 POST URL规则如下: px 排序方式: new 最新 default 默认gx 工作性质: 全职 实习gj 工作经验: 不限 应届毕业生 3年及以下 3-5年 5-10年 10年以上 不要求city 城市: 北京 例如:用此规则构建 工作经验:3年及以下 排序方式: 最新 城市: 北京得到URL:https://www.lagou.com/jobs/positionAjax.json?gj=3年及以下&amp;px=new&amp;city=北京&amp;needAddtionalResult=false&amp;isSchoolJob=0 构造完URL后, POST请求后得到JSON格式字符串, 转换为字典格式解析即可, 根据自己需求保存信息其中注意 positionId参数 为职位ID, 根据此ID构造职位详情URL 注1: 在POST请求时 反爬验证为Referer 设置头为 &#39;Referer&#39;:&#39;https://www.lagou.com/jobs/list_java?px=new&amp;city=%E5%8C%97%E4%BA%AC&#39;注2: 当工作经验为应届毕业生时,URL特为https://www.lagou.com/jobs/positionAjax.json?px=default&amp;gx=全职&amp;city=北京&amp;needAddtionalResult=false&amp;isSchoolJob=1 抓详情通过positionId参数,构造详情URL:https://www.lagou.com/jobs/+ positionId然后GET请求此参数即可. 注: 当大规模抓取时, 速度过快会导致IP被查到, 结果为 302请求跳转到登录页面. 通过Google解决办法在 spider.py文件中 添加默认请求头即可.123456789101112131415custom_settings = &#123; "COOKIES_ENABLED": False, # "DOWNLOAD_DELAY": 1, 'DEFAULT_REQUEST_HEADERS': &#123; 'Accept': 'application/json, text/javascript, */*; q=0.01', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'zh-CN,zh;q=0.8', 'Connection': 'keep-alive', 'Cookie': 'user_trace_token=20171015132411-12af3b52-3a51-466f-bfae-a98fc96b4f90; LGUID=20171015132412-13eaf40f-b169-11e7-960b-525400f775ce; SEARCH_ID=070e82cdbbc04cc8b97710c2c0159ce1; ab_test_random_num=0; X_HTTP_TOKEN=d1cf855aacf760c3965ee017e0d3eb96; showExpriedIndex=1; showExpriedCompanyHome=1; showExpriedMyPublish=1; hasDeliver=0; PRE_UTM=; PRE_HOST=www.baidu.com; PRE_SITE=https%3A%2F%2Fwww.baidu.com%2Flink%3Furl%3DsXIrWUxpNGLE2g_bKzlUCXPTRJMHxfCs6L20RqgCpUq%26wd%3D%26eqid%3Dee53adaf00026e940000000559e354cc; PRE_LAND=https%3A%2F%2Fwww.lagou.com%2F; index_location_city=%E5%85%A8%E5%9B%BD; TG-TRACK-CODE=index_hotjob; login=false; unick=""; _putrc=""; JSESSIONID=ABAAABAAAFCAAEG50060B788C4EED616EB9D1BF30380575; _gat=1; _ga=GA1.2.471681568.1508045060; LGSID=20171015203008-94e1afa5-b1a4-11e7-9788-525400f775ce; LGRID=20171015204552-c792b887-b1a6-11e7-9788-525400f775ce', 'Host': 'www.lagou.com', 'Origin': 'https://www.lagou.com', 'Referer': 'https://www.lagou.com/', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36', &#125; &#125; ps: 迷之成功, 测试了好多遍用类似的参数都不行, 只能用这个办法了.]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[XPath简单语法]]></title>
       <url>%2F2018%2F01%2F11%2FXPath%E7%AE%80%E5%8D%95%E8%AF%AD%E6%B3%95%2F</url>
       <content type="text"><![CDATA[简单记记 获取div//div 获取指定属性 div//div[@class=&quot;top&quot;] 获取div属性中的文本//div/text() 获取div的指定属性//div/@class 获取div标签下所有文本string(//div)]]></content>
