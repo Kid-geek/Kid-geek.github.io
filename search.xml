@@ -4,6 +4,32 @@
   
     
     <entry>
+      <title><![CDATA[阿里云配置Redis远程连接]]></title>
+      <url>http://yoursite.com/2018/01/16/%E9%98%BF%E9%87%8C%E4%BA%91%E9%85%8D%E7%BD%AERedis%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>为了配置Scrapy-redis分布式爬虫, 遇到超多坑, 记录一下</p>
+<h2 id="安装Redis"><a href="#安装Redis" class="headerlink" title="安装Redis"></a>安装Redis</h2><p><code>yum -y install redis</code> 直接输入命令即可</p>
+<h2 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h2><p><code>vim /etc/redis.conf</code></p>
+<ol>
+<li><code>bind 127.0.0.1</code>  代表指定Redis只接收来自于该IP地址的请求，如果不进行设置，那么将处理所有请求，在生产环境中最好设置该项。<br>如果需要远程连接  则注释掉该项即可</li>
+<li><code>daemonize yes</code> 代表是否后台运行</li>
+<li>在redis3.2之后，redis增加了protected-mode，在这个模式下，即使注释掉了bind 127.0.0.1，再访问redisd时候还是报错,解决办法:<br><code>protected-mode yes</code> 修改为  <code>protected-mode no</code></li>
+<li><code>requirepass xxxx</code> xxxx代表连接Redis密码</li>
+</ol>
+</blockquote>
+<h2 id="远程连接Reids"><a href="#远程连接Reids" class="headerlink" title="远程连接Reids"></a>远程连接Reids</h2><p><code>redis-cli -h ip -a password</code> Ip填写阿里云外网IP  密码填写密码即可</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Python3爬虫 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[同时运行多个Scrapy爬虫的方法]]></title>
       <url>http://yoursite.com/2018/01/12/%E5%90%8C%E6%97%B6%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAScrapy%E7%88%AC%E8%99%AB%E7%9A%84%E6%96%B9%E6%B3%95/</url>
       <content type="html"><![CDATA[<blockquote>
