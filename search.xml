@@ -4,6 +4,29 @@
   
     
     <entry>
+      <title><![CDATA[阿里云配置Anaconda]]></title>
+      <url>http://yoursite.com/2018/01/16/%E9%98%BF%E9%87%8C%E4%BA%91%E9%85%8D%E7%BD%AEAnaconda/</url>
+      <content type="html"><![CDATA[<h1 id="安装Anaconda"><a href="#安装Anaconda" class="headerlink" title="安装Anaconda"></a>安装Anaconda</h1><p><a href="https://www.anaconda.com/download" target="_blank" rel="external">官网下载Anaconda-Linux版本</a></p>
+<ol>
+<li><code>yum install bzip2</code>安装依赖  (很重要)</li>
+<li><code>bash anaconda.sh</code> 安装Anaconda 一路回车之后选择yes yes yes</li>
+<li><code>source ~/.bashrc</code> 激活命令</li>
+<li><code>python</code>测试安装是否成功</li>
+<li>如果安装未成功,则手动添加PATH变量.<br><code>vim /etc/profile</code><br>在最后一行添加<code>PATH=~/anaconda3/bin:$PATH
+export PATH</code>即可</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> Python3爬虫 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[阿里云配置Redis远程连接]]></title>
       <url>http://yoursite.com/2018/01/16/%E9%98%BF%E9%87%8C%E4%BA%91%E9%85%8D%E7%BD%AERedis%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5/</url>
       <content type="html"><![CDATA[<blockquote>
