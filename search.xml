@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[Linxu的文件权限和目录配置]]></title>
+      <url>%2F2018%2F01%2F17%2FLinxu%E7%9A%84%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E5%92%8C%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE%2F</url>
+      <content type="text"><![CDATA[读书笔记 #Linux文件权限和目录配置 Linux文件属性ls -l命令查看详细内容-rw-r--r-- 1 root root 1023 Sep 4 18:25 test.txt 分别为 [权限] [连接] [所有者] [用户组] [文件容量] [修 改 日 期] [文件名] 权限: 第一个字符代表这个文件是”目录、文件或链接文件等”· [d] : 目录· [-] : 文件· [i] : 连接文件· [b] : 设备文件里面的可供存储的接口设备· [c] : 表示设备文件里面的串行端口设备, 例如键盘鼠标等]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[阿里云配置Anaconda]]></title>
       <url>%2F2018%2F01%2F16%2F%E9%98%BF%E9%87%8C%E4%BA%91%E9%85%8D%E7%BD%AEAnaconda%2F</url>
       <content type="text"><![CDATA[安装Anaconda官网下载Anaconda-Linux版本 yum install bzip2安装依赖 (很重要) bash anaconda.sh 安装Anaconda 一路回车之后选择yes yes yes source ~/.bashrc 激活命令 python测试安装是否成功 如果安装未成功,则手动添加PATH变量.vim /etc/profile在最后一行添加PATH=~/anaconda3/bin:$PATH export PATH即可]]></content>
