@@ -396,8 +396,7 @@
             <blockquote>
 <p>读书笔记</p>
 </blockquote>
-<p>#Linux文件权限和目录配置</p>
-<h2 id="Linux文件属性"><a href="#Linux文件属性" class="headerlink" title="Linux文件属性"></a>Linux文件属性</h2><p><code>ls -l</code>命令查看详细内容<br><code>-rw-r--r--   1     root      root      1023      Sep  4  18:25  test.txt</code>  分别为<br>  [权限]     [连接] [所有者]  [用户组]  [文件容量]   [修 改 日 期]   [文件名]</p>
+<h1 id="Linux文件权限和目录配置"><a href="#Linux文件权限和目录配置" class="headerlink" title="Linux文件权限和目录配置"></a>Linux文件权限和目录配置</h1><h2 id="Linux文件属性"><a href="#Linux文件属性" class="headerlink" title="Linux文件属性"></a>Linux文件属性</h2><p><code>ls -l</code>命令查看详细内容<br><code>-rw-r--r--   1     root      root      1023      Sep  4  18:25  test.txt</code>  分别为<br>  [权限]     [连接] [所有者]  [用户组]  [文件容量]   [修 改 日 期]   [文件名]</p>
 <p>权限: 第一个字符代表这个文件是”目录、文件或链接文件等”<br>· [d] : 目录<br>· [-] : 文件<br>· [i] : 连接文件<br>· [b] : 设备文件里面的可供存储的接口设备<br>· [c] : 表示设备文件里面的串行端口设备, 例如键盘鼠标等</p>
 
           
@@ -557,8 +556,7 @@
 <li><code>bash anaconda.sh</code> 安装Anaconda 一路回车之后选择yes yes yes</li>
 <li><code>source ~/.bashrc</code> 激活命令</li>
 <li><code>python</code>测试安装是否成功</li>
-<li>如果安装未成功,则手动添加PATH变量.<br><code>vim /etc/profile</code><br>在最后一行添加<code>PATH=~/anaconda3/bin:$PATH
-export PATH</code>即可</li>
+<li>手动添加PATH变量.<br><code>echo &#39;export PATH=&quot;~/anaconda3/bin:$PATH&quot;&#39; &gt;&gt; ~/.bashrc</code></li>
 </ol>
 
           

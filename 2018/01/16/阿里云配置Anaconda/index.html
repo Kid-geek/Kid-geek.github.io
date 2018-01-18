@@ -93,7 +93,7 @@ yum install bzip2安装依赖  (很重要)
 bash anaconda.sh 安装Anaconda 一路回车之后选择yes yes yes
 source ~/.bashrc 激活命令
 python测试安装是否成功
-如果安装未成功,则手动添加PATH变量.vim /etc/profile在最后一行添加PATH=~/anac">
+手动添加PATH变量.echo &amp;#39;export PATH=&amp;quot;~/anaconda3/bin">
 <meta property="og:type" content="article">
 <meta property="og:title" content="阿里云配置Anaconda">
 <meta property="og:url" content="http://yoursite.com/2018/01/16/阿里云配置Anaconda/index.html">
@@ -104,8 +104,8 @@ yum install bzip2安装依赖  (很重要)
 bash anaconda.sh 安装Anaconda 一路回车之后选择yes yes yes
 source ~/.bashrc 激活命令
 python测试安装是否成功
-如果安装未成功,则手动添加PATH变量.vim /etc/profile在最后一行添加PATH=~/anac">
-<meta property="og:updated_time" content="2018-01-15T10:37:10.013Z">
+手动添加PATH变量.echo &amp;#39;export PATH=&amp;quot;~/anaconda3/bin">
+<meta property="og:updated_time" content="2018-01-18T10:42:44.422Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="阿里云配置Anaconda">
 <meta name="twitter:description" content="安装Anaconda官网下载Anaconda-Linux版本
@@ -114,7 +114,7 @@ yum install bzip2安装依赖  (很重要)
 bash anaconda.sh 安装Anaconda 一路回车之后选择yes yes yes
 source ~/.bashrc 激活命令
 python测试安装是否成功
-如果安装未成功,则手动添加PATH变量.vim /etc/profile在最后一行添加PATH=~/anac">
+手动添加PATH变量.echo &amp;#39;export PATH=&amp;quot;~/anaconda3/bin">
 
 
 
@@ -411,8 +411,7 @@ python测试安装是否成功
 <li><code>bash anaconda.sh</code> 安装Anaconda 一路回车之后选择yes yes yes</li>
 <li><code>source ~/.bashrc</code> 激活命令</li>
 <li><code>python</code>测试安装是否成功</li>
-<li>如果安装未成功,则手动添加PATH变量.<br><code>vim /etc/profile</code><br>在最后一行添加<code>PATH=~/anaconda3/bin:$PATH
-export PATH</code>即可</li>
+<li>手动添加PATH变量.<br><code>echo &#39;export PATH=&quot;~/anaconda3/bin:$PATH&quot;&#39; &gt;&gt; ~/.bashrc</code></li>
 </ol>
 
       
