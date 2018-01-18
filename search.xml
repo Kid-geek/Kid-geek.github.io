@@ -66,6 +66,13 @@
 
     
     <entry>
+      <title><![CDATA[2018]]></title>
+      <url>%2F2018%2F01%2F02%2F2018%2F</url>
+      <content type="text"><![CDATA[小小规划下2018(假装假装)First稳定工作 爬虫向 互联网金融 10K+ Second攒钱 3000 * 12 + 7000 = 4W+ Third技能树(不分先后): Scrapy精通 数据挖掘+机器学习入门 数据结构重刷 MySQL精通 分布式精通 (CSDN视频) Linux熟练使用 (鸟哥私房菜) Python基础 愿望清单: 微单 4K 显示器 2K PS4 2K 内存条 0.5K 尾巴: 算了算了]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[Scrapy框架流程图]]></title>
       <url>%2F2017%2F12%2F16%2FScrapy%E6%A1%86%E6%9E%B6%E6%B5%81%E7%A8%8B%E5%9B%BE%2F</url>
       <content type="text"><![CDATA[方便理解整个Scrapy运行流程 画个图]]></content>
