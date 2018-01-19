@@ -99,7 +99,7 @@ Linux文件权限和目录配置Linux文件属性ls -l命令查看详细内容-r
 
 Linux文件权限和目录配置Linux文件属性ls -l命令查看详细内容-rw-r--r--   1     root      root      1023      Sep  4  18:25  test.txt  分别为  [权限]     [连接] [所有者]  [用户组]  [文件容量]   [修 改 日 期]   [文件名]
 权限: 第一个字符代表这个文件是”目录、文件或">
-<meta property="og:updated_time" content="2018-01-17T08:26:12.469Z">
+<meta property="og:updated_time" content="2018-01-19T09:46:53.579Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linxu的文件权限和目录配置">
 <meta name="twitter:description" content="读书笔记
@@ -401,6 +401,18 @@ Linux文件权限和目录配置Linux文件属性ls -l命令查看详细内容-r
 </blockquote>
 <h1 id="Linux文件权限和目录配置"><a href="#Linux文件权限和目录配置" class="headerlink" title="Linux文件权限和目录配置"></a>Linux文件权限和目录配置</h1><h2 id="Linux文件属性"><a href="#Linux文件属性" class="headerlink" title="Linux文件属性"></a>Linux文件属性</h2><p><code>ls -l</code>命令查看详细内容<br><code>-rw-r--r--   1     root      root      1023      Sep  4  18:25  test.txt</code>  分别为<br>  [权限]     [连接] [所有者]  [用户组]  [文件容量]   [修 改 日 期]   [文件名]</p>
 <p>权限: 第一个字符代表这个文件是”目录、文件或链接文件等”<br>· [d] : 目录<br>· [-] : 文件<br>· [i] : 连接文件<br>· [b] : 设备文件里面的可供存储的接口设备<br>· [c] : 表示设备文件里面的串行端口设备, 例如键盘鼠标等</p>
+<h1 id="权限与命令间的关系"><a href="#权限与命令间的关系" class="headerlink" title="权限与命令间的关系"></a>权限与命令间的关系</h1><ol>
+<li><p>让用户能进入某目录成为’可工作目录’的基本权限是什么<br>· 可使用的命令: 例如cd等切换工作目录的命令<br>· 目录所需权限: 用户对这个目录至少需要 x 的权限<br>· 额外需求: 如果用户想用ls查阅,则用户对此目录还需有 r 的权限</p>
+</li>
+<li><p>用户在某个目录内读取一个文件的基本权限是什么<br>· 可使用的命令: 例如 cat more less等<br>· 目录所需权限: 用户对这个目录至少需要具有 x 权限<br>· 文件所需权限: 用户对文件至少需要 r 的权限</p>
+</li>
+<li><p>让用户修改一个文件的基本权限是什么<br>· 可使用的命令: 例如 nano 或 vi 等<br>· 目录所需权限: 用户对这个目录至少需要具有 x 权限<br>· 文件所需权限: 用户对文件至少需要 r,w 的权限</p>
+</li>
+<li><p>让一个用户可以创建一个文件的基本权限是什么<br>· 目录所需权限: 用户在该目录至少具有 w x 的权限 重点在w</p>
+</li>
+<li><p>让用户进入某目录并执行该目录下某个命令的基本权限是什么<br>· 目录所需权限: 用户对这个目录至少需要具有 x 权限<br>· 文件所需权限: 用户对文件至少需要 x 的权限</p>
+</li>
+</ol>
 
       
     </div>
@@ -623,7 +635,7 @@ var duoshuoQuery = {short_name:"kid-geek"};
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux文件权限和目录配置"><span class="nav-number">1.</span> <span class="nav-text">Linux文件权限和目录配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux文件属性"><span class="nav-number">1.1.</span> <span class="nav-text">Linux文件属性</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux文件权限和目录配置"><span class="nav-number">1.</span> <span class="nav-text">Linux文件权限和目录配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux文件属性"><span class="nav-number">1.1.</span> <span class="nav-text">Linux文件属性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#权限与命令间的关系"><span class="nav-number">2.</span> <span class="nav-text">权限与命令间的关系</span></a></li></ol></div>
             
 
           </div>
