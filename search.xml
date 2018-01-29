@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[Scrapy随机更换User-Agent]]></title>
+      <url>%2F2018%2F01%2F29%2FScrapy%E9%9A%8F%E6%9C%BA%E6%9B%B4%E6%8D%A2User-Agent%2F</url>
+      <content type="text"><![CDATA[利用DownMIDLEWARE实现UA随机更换安装fake-useragent库,随机生成UApip install fake-useragent github地址 在middlewares创建类123456789101112131415from fake_useragent import UserAgent#随机更换UserAgentclass RandomUserAgentMiddleware(object): def __init__(self,crawler): super(RandomUserAgentMiddleware,self).__init__() @classmethod def from_crawler(cls,crawler): return cls(crawler) def process_request(self,request,spider): # 调用fake-useragent 随机生成UA ua = UserAgent() request.headers.setdefault('User-Agent',ua.random) 在settings中设置 DOWNLOADER_MIDDLEWARES1234DOWNLOADER_MIDDLEWARES = &#123; 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None, 'lagou.middlewares.RandomUserAgentMiddleware': 500,&#125; 注意:要先取消掉Scrapy默认设置UA的Middleware]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[搭建Elasticsearch]]></title>
       <url>%2F2018%2F01%2F26%2F%E6%90%AD%E5%BB%BAElasticsearch%2F</url>
       <content type="text"><![CDATA[搭建JAVA环境 地址 安装elasticsearch-rtf (国人制作安装好插件的elasticsearch) 地址直接从github搜索,下完后解压即可 在bin目录下直接用命令行运行elasticsearch即可,端口号9200 搭建NodeJS环境 地址 安装head插件进行管理 地址直接从github搜索,下完解压缩先安装cnpm npm install -g cnpm --registry=https://registry.npm.taobao.org然后 在head目录下命令行输入 cnpm install cnpm run start 即可, 端口号9100 安装kibana 在官网下载对应版本为 5.1.1 地址下完后解压即可 在bin目录下直接用命令行运行kibana.bat即可 端口号5601]]></content>

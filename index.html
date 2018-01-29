@@ -284,6 +284,162 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/29/Scrapy随机更换User-Agent/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kid">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/01/29/Scrapy随机更换User-Agent/" itemprop="url">
+                  Scrapy随机更换User-Agent
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-29T14:51:44Z">
+                2018-01-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python3爬虫/" itemprop="url" rel="index">
+                    <span itemprop="name">Python3爬虫</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/01/29/Scrapy随机更换User-Agent/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/01/29/Scrapy随机更换User-Agent/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="利用DownMIDLEWARE实现UA随机更换"><a href="#利用DownMIDLEWARE实现UA随机更换" class="headerlink" title="利用DownMIDLEWARE实现UA随机更换"></a>利用DownMIDLEWARE实现UA随机更换</h1><h2 id="安装fake-useragent库-随机生成UA"><a href="#安装fake-useragent库-随机生成UA" class="headerlink" title="安装fake-useragent库,随机生成UA"></a>安装fake-useragent库,随机生成UA</h2><p><code>pip install fake-useragent</code>  <a href="https://github.com/hellysmile/fake-useragent" target="_blank" rel="external">github地址</a></p>
+<h2 id="在middlewares创建类"><a href="#在middlewares创建类" class="headerlink" title="在middlewares创建类"></a>在middlewares创建类</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> fake_useragent <span class="keyword">import</span> UserAgent</div><div class="line"><span class="comment">#随机更换UserAgent</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">RandomUserAgentMiddleware</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,crawler)</span>:</span></div><div class="line">        super(RandomUserAgentMiddleware,self).__init__()</div><div class="line"></div><div class="line"><span class="meta">    @classmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">from_crawler</span><span class="params">(cls,crawler)</span>:</span></div><div class="line">        <span class="keyword">return</span> cls(crawler)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_request</span><span class="params">(self,request,spider)</span>:</span></div><div class="line">        <span class="comment"># 调用fake-useragent  随机生成UA</span></div><div class="line">        ua = UserAgent()</div><div class="line">        request.headers.setdefault(<span class="string">'User-Agent'</span>,ua.random)</div></pre></td></tr></table></figure>
+<h2 id="在settings中设置-DOWNLOADER-MIDDLEWARES"><a href="#在settings中设置-DOWNLOADER-MIDDLEWARES" class="headerlink" title="在settings中设置 DOWNLOADER_MIDDLEWARES"></a>在settings中设置 DOWNLOADER_MIDDLEWARES</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">DOWNLOADER_MIDDLEWARES = &#123;</div><div class="line">   <span class="string">'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware'</span>: <span class="keyword">None</span>,</div><div class="line">   <span class="string">'lagou.middlewares.RandomUserAgentMiddleware'</span>: <span class="number">500</span>,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意:要先取消掉Scrapy默认设置UA的Middleware</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/26/搭建Elasticsearch/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1049,7 +1205,7 @@
 <p>一个项目有时有多个爬虫, 可以自定义项目名录达到一次运行多个爬虫的目的.<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/12/同时运行多个Scrapy爬虫的方法/#далее" rel="contents">
+            <a class="btn" href="/2018/01/12/同时运行多个Scrapy爬虫的方法/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1206,7 +1362,7 @@
           <h1 id="配置Item导入MySQL"><a href="#配置Item导入MySQL" class="headerlink" title="配置Item导入MySQL"></a>配置Item导入MySQL</h1><h2 id="同步插入数据"><a href="#同步插入数据" class="headerlink" title="同步插入数据"></a>同步插入数据</h2>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/12/Scrapy配置MySQL/#далее" rel="contents">
+            <a class="btn" href="/2018/01/12/Scrapy配置MySQL/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1520,7 +1676,7 @@
           <h1 id="爬取拉勾网招聘信息"><a href="#爬取拉勾网招聘信息" class="headerlink" title="爬取拉勾网招聘信息"></a>爬取拉勾网招聘信息</h1><h2 id="抓列表"><a href="#抓列表" class="headerlink" title="抓列表"></a>抓列表</h2><p>后台查看到内容是AJAX生成的,并且POST不同URL获取到不同内容,  但表单参数只作为控制页码使用.<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/12/Scrapy拉勾/#далее" rel="contents">
+            <a class="btn" href="/2018/01/12/Scrapy拉勾/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1716,163 +1872,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/04/Scrapy配置文件Setting理解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kid">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kid">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/04/Scrapy配置文件Setting理解/" itemprop="url">
-                  Scrapy配置文件Setting理解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-04T14:11:50Z">
-                2018-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python3爬虫/" itemprop="url" rel="index">
-                    <span itemprop="name">Python3爬虫</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/01/04/Scrapy配置文件Setting理解/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/01/04/Scrapy配置文件Setting理解/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Setting-py-选项理解"><a href="#Setting-py-选项理解" class="headerlink" title="Setting.py 选项理解"></a>Setting.py 选项理解</h1>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/04/Scrapy配置文件Setting理解/#далее" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1922,7 +1921,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
