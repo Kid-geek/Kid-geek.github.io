@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title><![CDATA[Redis基本命令]]></title>
+      <url>%2F2018%2F02%2F01%2FRedis%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%2F</url>
+      <content type="text"><![CDATA[Redis基础命令字符串可以存储字符串 整数 浮点数 String命令 描述 SET key value 设置字符串key的值 GET key value 获取字符串key的值 DEL key value 删除字符串key的值 列表 List命令 描述 LPUSH key value value2 在列表key左端插入一个或多个值 RPUSH key value value2 在列表key右端插入一个或多个值 LPOP key 从列表key左端弹出一个值 RPOP key 从列表key右端弹出一个值 LINDEX key index 获取列表key中index位置的值 LRANGE key start end 获取列表key中位置在[start,end]的值 LLEN key 获取列表key的长度 注: LRANGE key 0 -1 获取全部值(负索引表示倒数第几个) 集合 Set命令 描述 SADD key member1 member2 向集合key中添加一个或多个成员 SREM key member1 member2 删除集合key中一个或多个成员 SMEMBERS key 获取集合key中所有成员 SCARD key 获取集合key中成员数量 SISMEMBER key member 判断member是否是集合key的成员 有序集合在有序集合中,每个成员都有一个分数,所有成员按给定分数在集合中有序排列 ZSet命令 描述 ZADD key score1 member1 score2 member2 向有序集合key中添加一个或多个成员 ZREM key member1,member2 删除有序集合key中一个或多个成员 ZRANG key start stop 获取有序集合key中所有成员位置在[start,stop]的值 ZRANGEBYSCORE key min max 获取有序集合key中分值在[min,max]范围的所有成员 哈希可以存储多个键值对 Hash命令 描述 HSET key field value 将哈希key的field字段赋值为value HDEL key field1 filed2 删除哈希key中一个或多个字段 HGET key filed 获取哈希key的field字段的值 HGETALL key 获取哈希key的所有字段的值]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Scrapy-redis分布式爬虫]]></title>
+      <url>%2F2018%2F02%2F01%2FScrapy-redis%E5%88%86%E5%B8%83%E5%BC%8F%E7%88%AC%E8%99%AB%2F</url>
+      <content type="text"><![CDATA[用Redis做队列处理实现分布式实现原理用Redis的ZSet有序队列做调度器来集中处理Requests 安装Scrapy-redis直接pip install scrapy-redis即可 创建Spider继承自RedisSpider12345678class JobboleSpider(RedisSpider): name = 'jobbole' allowed_domains = ['blog.jobbole.com'] def parse(self, response): #编写抓取规则 pass settings.py配置123456789101112REDIS_URL='redis://:password@host' # 连接Redis# 使用scrapy_redis的调度器替换原版调度器SCHEDULER='scrapy_redis.scheduler.Scheduler'#使用scrapy_redis的RFPDupeFilter作去重过滤器DUPEFILTER_CLASS='scrapy_redis.dupefilter.RFPDupeFilter'ITEM_PIPELINES=&#123; # 'scrapy_redis.pipelines.RedisPipeline':300 # 可选项 是否把ITEM存储到Redis中&#125;#爬虫停止后,保留/清理Redis中的请求队列以及去重集合# TRUE:保留 FALSE:清理 默认为FALSESCHEDULER_PERSIST=TRUE 打开所有爬虫,部署Redis队列打开所有部署到各个服务器上的爬虫,进入队列等待状态.连接Redis服务器,输入lpush spider_name:start_urls &#39;http://www.baidu.com&#39;既可开始抓取 编写代码读取Redis中保存的数据1234567891011121314151617import redisimport jsonITEM_KEYS='spider_name:items'def process_item(item): #添加处理数据的代码 passdef main(): r=redis.StrictRedis(host='host',port=6379) for _ in range(r.llen(ITEM_KEYS)): data=r.lpop(ITEM_KEYS) item=json.loads(data.decode('utf-8')) process_item(item)if __name__ == '__main__': main()]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Scrapy暂停与重启]]></title>
+      <url>%2F2018%2F02%2F01%2FScrapy%E6%9A%82%E5%81%9C%E4%B8%8E%E9%87%8D%E5%90%AF%2F</url>
+      <content type="text"><![CDATA[Scrapy中途暂停爬虫保存状态新建文件夹,然后在命令行直接运行 scrapy crawl spider -s JOBDIR=job/001即可暂定使用Ctry+C,注意不要按两次,按两次为强制关闭,耐心等待保存爬虫状态即可.再次启动同样使用scrapy crawl spider -s JOBDIR=job/001]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[MySQL插入时唯一值处理]]></title>
       <url>%2F2018%2F02%2F01%2FMySQL%E6%8F%92%E5%85%A5%E6%97%B6%E5%94%AF%E4%B8%80%E5%80%BC%E5%A4%84%E7%90%86%2F</url>
       <content type="text"><![CDATA[#在mysql中避免重复插入记录的两种方法 使用ignore关键字如果是用主键primary或者唯一索引unique区分了记录的唯一性,避免重复插入记录可以使用：INSERT IGNORE INTO `table_name` (`email`, `phone`, `user_id`) VALUES (&#39;aaa&#39;, &#39;99999&#39;, &#39;9999&#39;);当有重复记录就会忽略,执行后返回数字0 使用ON DUPLICATE KEY UPDATE关键字插入数据时,如果记录具有唯一性,则执行UPDATE语句INSERT INTO table1 SELECT * FROM table2 ON DUPLICATE KEY UPDATE `table1`.`course`=`table2`.`course` 将一个表的数据导入到另外一个表中,也可使用INSERT INTO company_short (ent_id, entname, short, code, market_type) SELECT ent_id, entname, short, code, market_type FROM company_short_zh ON DUPLICATE KEY UPDATE company_short.ent_id=company_short_zh.ent_id, company_short.market_type=company_short_zh.market_type注:此表中entname,short,code为unique索引,遇到重复时,新数据中ent_id, market_type覆盖掉旧数据的值]]></content>

@@ -284,6 +284,615 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/01/Redis基本命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kid">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/02/01/Redis基本命令/" itemprop="url">
+                  Redis基本命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T15:52:51Z">
+                2018-02-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/02/01/Redis基本命令/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/02/01/Redis基本命令/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Redis基础命令"><a href="#Redis基础命令" class="headerlink" title="Redis基础命令"></a>Redis基础命令</h1><h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>可以存储字符串  整数  浮点数   </p>
+<table>
+<thead>
+<tr>
+<th>String命令</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SET key value</code></td>
+<td style="text-align:center">设置字符串key的值</td>
+</tr>
+<tr>
+<td><code>GET key value</code></td>
+<td style="text-align:center">获取字符串key的值</td>
+</tr>
+<tr>
+<td><code>DEL key value</code></td>
+<td style="text-align:center">删除字符串key的值</td>
+</tr>
+</tbody>
+</table>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><table>
+<thead>
+<tr>
+<th>List命令</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LPUSH key value value2</code></td>
+<td style="text-align:center">在列表key左端插入一个或多个值</td>
+</tr>
+<tr>
+<td><code>RPUSH key value value2</code></td>
+<td style="text-align:center">在列表key右端插入一个或多个值</td>
+</tr>
+<tr>
+<td><code>LPOP key</code></td>
+<td style="text-align:center">从列表key左端弹出一个值</td>
+</tr>
+<tr>
+<td><code>RPOP key</code></td>
+<td style="text-align:center">从列表key右端弹出一个值</td>
+</tr>
+<tr>
+<td><code>LINDEX key index</code></td>
+<td style="text-align:center">获取列表key中index位置的值</td>
+</tr>
+<tr>
+<td><code>LRANGE key start end</code></td>
+<td style="text-align:center">获取列表key中位置在[start,end]的值</td>
+</tr>
+<tr>
+<td><code>LLEN key</code></td>
+<td style="text-align:center">获取列表key的长度</td>
+</tr>
+</tbody>
+</table>
+<p>注: <code>LRANGE key 0 -1</code> 获取全部值(负索引表示倒数第几个)</p>
+<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><table>
+<thead>
+<tr>
+<th>Set命令</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SADD key member1 member2</code></td>
+<td style="text-align:center">向集合key中添加一个或多个成员</td>
+</tr>
+<tr>
+<td><code>SREM key member1 member2</code></td>
+<td style="text-align:center">删除集合key中一个或多个成员</td>
+</tr>
+<tr>
+<td><code>SMEMBERS key</code></td>
+<td style="text-align:center">获取集合key中所有成员</td>
+</tr>
+<tr>
+<td><code>SCARD key</code></td>
+<td style="text-align:center">获取集合key中成员数量</td>
+</tr>
+<tr>
+<td><code>SISMEMBER key member</code></td>
+<td style="text-align:center">判断member是否是集合key的成员</td>
+</tr>
+</tbody>
+</table>
+<h2 id="有序集合"><a href="#有序集合" class="headerlink" title="有序集合"></a>有序集合</h2><p>在有序集合中,每个成员都有一个分数,所有成员按给定分数在集合中有序排列</p>
+<table>
+<thead>
+<tr>
+<th>ZSet命令</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ZADD key score1 member1 score2 member2</code></td>
+<td style="text-align:center">向有序集合key中添加一个或多个成员</td>
+</tr>
+<tr>
+<td><code>ZREM key member1,member2</code></td>
+<td style="text-align:center">删除有序集合key中一个或多个成员</td>
+</tr>
+<tr>
+<td><code>ZRANG key start stop</code></td>
+<td style="text-align:center">获取有序集合key中所有成员位置在[start,stop]的值</td>
+</tr>
+<tr>
+<td><code>ZRANGEBYSCORE key min max</code></td>
+<td style="text-align:center">获取有序集合key中分值在[min,max]范围的所有成员</td>
+</tr>
+</tbody>
+</table>
+<h2 id="哈希"><a href="#哈希" class="headerlink" title="哈希"></a>哈希</h2><p>可以存储多个键值对</p>
+<table>
+<thead>
+<tr>
+<th>Hash命令</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HSET key field value</code></td>
+<td style="text-align:center">将哈希key的field字段赋值为value</td>
+</tr>
+<tr>
+<td><code>HDEL key field1 filed2</code></td>
+<td style="text-align:center">删除哈希key中一个或多个字段</td>
+</tr>
+<tr>
+<td><code>HGET key filed</code></td>
+<td style="text-align:center">获取哈希key的field字段的值</td>
+</tr>
+<tr>
+<td><code>HGETALL key</code></td>
+<td style="text-align:center">获取哈希key的所有字段的值</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/01/Scrapy-redis分布式爬虫/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kid">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/02/01/Scrapy-redis分布式爬虫/" itemprop="url">
+                  Scrapy-redis分布式爬虫
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T14:48:25Z">
+                2018-02-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python3爬虫/" itemprop="url" rel="index">
+                    <span itemprop="name">Python3爬虫</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/02/01/Scrapy-redis分布式爬虫/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/02/01/Scrapy-redis分布式爬虫/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="用Redis做队列处理实现分布式"><a href="#用Redis做队列处理实现分布式" class="headerlink" title="用Redis做队列处理实现分布式"></a>用Redis做队列处理实现分布式</h1><h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><p><img src="/images/Scrapy-redis原理.png" alt="“Scrapy-redis框架流程图”"><br>用Redis的ZSet有序队列做调度器来集中处理Requests</p>
+<h2 id="安装Scrapy-redis"><a href="#安装Scrapy-redis" class="headerlink" title="安装Scrapy-redis"></a>安装Scrapy-redis</h2><p>直接<code>pip install scrapy-redis</code>即可</p>
+<h2 id="创建Spider继承自RedisSpider"><a href="#创建Spider继承自RedisSpider" class="headerlink" title="创建Spider继承自RedisSpider"></a>创建Spider继承自RedisSpider</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">JobboleSpider</span><span class="params">(RedisSpider)</span>:</span></div><div class="line">    name = <span class="string">'jobbole'</span></div><div class="line">    allowed_domains = [<span class="string">'blog.jobbole.com'</span>]</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(self, response)</span>:</span></div><div class="line">        <span class="comment">#编写抓取规则</span></div><div class="line">        <span class="keyword">pass</span></div></pre></td></tr></table></figure>
+<h2 id="settings-py配置"><a href="#settings-py配置" class="headerlink" title="settings.py配置"></a><code>settings.py</code>配置</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">REDIS_URL=<span class="string">'redis://:password@host'</span>    <span class="comment"># 连接Redis</span></div><div class="line"><span class="comment"># 使用scrapy_redis的调度器替换原版调度器</span></div><div class="line">SCHEDULER=<span class="string">'scrapy_redis.scheduler.Scheduler'</span></div><div class="line"><span class="comment">#使用scrapy_redis的RFPDupeFilter作去重过滤器</span></div><div class="line">DUPEFILTER_CLASS=<span class="string">'scrapy_redis.dupefilter.RFPDupeFilter'</span></div><div class="line"></div><div class="line">ITEM_PIPELINES=&#123;</div><div class="line">    <span class="comment"># 'scrapy_redis.pipelines.RedisPipeline':300    # 可选项  是否把ITEM存储到Redis中</span></div><div class="line">&#125;</div><div class="line"><span class="comment">#爬虫停止后,保留/清理Redis中的请求队列以及去重集合</span></div><div class="line"><span class="comment"># TRUE:保留 FALSE:清理  默认为FALSE</span></div><div class="line">SCHEDULER_PERSIST=TRUE</div></pre></td></tr></table></figure>
+<h2 id="打开所有爬虫-部署Redis队列"><a href="#打开所有爬虫-部署Redis队列" class="headerlink" title="打开所有爬虫,部署Redis队列"></a>打开所有爬虫,部署Redis队列</h2><p>打开所有部署到各个服务器上的爬虫,进入队列等待状态.<br>连接Redis服务器,输入<code>lpush spider_name:start_urls &#39;http://www.baidu.com&#39;</code>既可开始抓取</p>
+<h2 id="编写代码读取Redis中保存的数据"><a href="#编写代码读取Redis中保存的数据" class="headerlink" title="编写代码读取Redis中保存的数据"></a>编写代码读取Redis中保存的数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> redis</div><div class="line"><span class="keyword">import</span> json</div><div class="line">ITEM_KEYS=<span class="string">'spider_name:items'</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">process_item</span><span class="params">(item)</span>:</span></div><div class="line">  <span class="comment">#添加处理数据的代码</span></div><div class="line">  <span class="keyword">pass</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">  r=redis.StrictRedis(host=<span class="string">'host'</span>,port=<span class="number">6379</span>)</div><div class="line">  <span class="keyword">for</span> _ <span class="keyword">in</span> range(r.llen(ITEM_KEYS)):</div><div class="line">    data=r.lpop(ITEM_KEYS)</div><div class="line">    item=json.loads(data.decode(<span class="string">'utf-8'</span>))</div><div class="line">    process_item(item)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">  main()</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/01/Scrapy暂停与重启/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kid">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/02/01/Scrapy暂停与重启/" itemprop="url">
+                  Scrapy暂停与重启
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T09:31:19Z">
+                2018-02-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python3爬虫/" itemprop="url" rel="index">
+                    <span itemprop="name">Python3爬虫</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/02/01/Scrapy暂停与重启/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/02/01/Scrapy暂停与重启/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Scrapy中途暂停爬虫保存状态"><a href="#Scrapy中途暂停爬虫保存状态" class="headerlink" title="Scrapy中途暂停爬虫保存状态"></a>Scrapy中途暂停爬虫保存状态</h1><p>新建文件夹,然后在命令行直接运行 <code>scrapy crawl spider -s JOBDIR=job/001</code>即可<br>暂定使用<code>Ctry+C</code>,注意不要按两次,按两次为强制关闭,耐心等待保存爬虫状态即可.<br>再次启动同样使用<code>scrapy crawl spider -s JOBDIR=job/001</code></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/01/MySQL插入时唯一值处理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1388,504 +1997,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/17/Linxu的文件权限和目录配置/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kid">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kid">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/17/Linxu的文件权限和目录配置/" itemprop="url">
-                  Linxu的文件权限和目录配置
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-17T14:06:41Z">
-                2018-01-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/01/17/Linxu的文件权限和目录配置/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/01/17/Linxu的文件权限和目录配置/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>读书笔记</p>
-</blockquote>
-<h1 id="Linux文件权限和目录配置"><a href="#Linux文件权限和目录配置" class="headerlink" title="Linux文件权限和目录配置"></a>Linux文件权限和目录配置</h1><h2 id="Linux文件属性"><a href="#Linux文件属性" class="headerlink" title="Linux文件属性"></a>Linux文件属性</h2><p><code>ls -l</code>命令查看详细内容<br><code>-rw-r--r--   1     root      root      1023      Sep  4  18:25  test.txt</code>  分别为<br>  [权限]     [连接] [所有者]  [用户组]  [文件容量]   [修 改 日 期]   [文件名]</p>
-<p>权限: 第一个字符代表这个文件是”目录、文件或链接文件等”<br>· [d] : 目录<br>· [-] : 文件<br>· [i] : 连接文件<br>· [b] : 设备文件里面的可供存储的接口设备<br>· [c] : 表示设备文件里面的串行端口设备, 例如键盘鼠标等</p>
-<h1 id="权限与命令间的关系"><a href="#权限与命令间的关系" class="headerlink" title="权限与命令间的关系"></a>权限与命令间的关系</h1><ol>
-<li><p>让用户能进入某目录成为’可工作目录’的基本权限是什么<br>· 可使用的命令: 例如cd等切换工作目录的命令<br>· 目录所需权限: 用户对这个目录至少需要 x 的权限<br>· 额外需求: 如果用户想用ls查阅,则用户对此目录还需有 r 的权限</p>
-</li>
-<li><p>用户在某个目录内读取一个文件的基本权限是什么<br>· 可使用的命令: 例如 cat more less等<br>· 目录所需权限: 用户对这个目录至少需要具有 x 权限<br>· 文件所需权限: 用户对文件至少需要 r 的权限</p>
-</li>
-<li><p>让用户修改一个文件的基本权限是什么<br>· 可使用的命令: 例如 nano 或 vi 等<br>· 目录所需权限: 用户对这个目录至少需要具有 x 权限<br>· 文件所需权限: 用户对文件至少需要 r,w 的权限</p>
-</li>
-<li><p>让一个用户可以创建一个文件的基本权限是什么<br>· 目录所需权限: 用户在该目录至少具有 w x 的权限 重点在w</p>
-</li>
-<li><p>让用户进入某目录并执行该目录下某个命令的基本权限是什么<br>· 目录所需权限: 用户对这个目录至少需要具有 x 权限<br>· 文件所需权限: 用户对文件至少需要 x 的权限</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/16/阿里云配置Anaconda/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kid">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kid">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/16/阿里云配置Anaconda/" itemprop="url">
-                  阿里云配置Anaconda
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-15T18:29:39Z">
-                2018-01-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python3爬虫/" itemprop="url" rel="index">
-                    <span itemprop="name">Python3爬虫</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/01/16/阿里云配置Anaconda/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/01/16/阿里云配置Anaconda/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="安装Anaconda"><a href="#安装Anaconda" class="headerlink" title="安装Anaconda"></a>安装Anaconda</h1><p><a href="https://www.anaconda.com/download" target="_blank" rel="external">官网下载Anaconda-Linux版本</a></p>
-<ol>
-<li><code>yum install bzip2</code>安装依赖  (很重要)</li>
-<li><code>bash anaconda.sh</code> 安装Anaconda 一路回车之后选择yes yes yes</li>
-<li><code>source ~/.bashrc</code> 激活命令</li>
-<li><code>python</code>测试安装是否成功</li>
-<li>手动添加PATH变量.<br><code>echo &#39;export PATH=&quot;~/anaconda3/bin:$PATH&quot;&#39; &gt;&gt; ~/.bashrc</code></li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/16/阿里云配置Redis远程连接/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kid">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kid">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/16/阿里云配置Redis远程连接/" itemprop="url">
-                  阿里云配置Redis远程连接
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-15T16:01:23Z">
-                2018-01-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/01/16/阿里云配置Redis远程连接/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/01/16/阿里云配置Redis远程连接/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>为了配置Scrapy-redis分布式爬虫, 遇到超多坑, 记录一下</p>
-<h2 id="安装Redis"><a href="#安装Redis" class="headerlink" title="安装Redis"></a>安装Redis</h2><p><code>yum -y install redis</code> 直接输入命令即可</p>
-<h2 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h2><p><code>vim /etc/redis.conf</code></p>
-<ol>
-<li><code>bind 127.0.0.1</code>  代表指定Redis只接收来自于该IP地址的请求，如果不进行设置，那么将处理所有请求，在生产环境中最好设置该项。<br>如果需要远程连接  则注释掉该项即可</li>
-<li><code>daemonize yes</code> 代表是否后台运行</li>
-<li>在redis3.2之后，redis增加了protected-mode，在这个模式下，即使注释掉了bind 127.0.0.1，再访问redisd时候还是报错,解决办法:<br><code>protected-mode yes</code> 修改为  <code>protected-mode no</code></li>
-<li><code>requirepass xxxx</code> xxxx代表连接Redis密码</li>
-</ol>
-</blockquote>
-<h2 id="远程连接Reids"><a href="#远程连接Reids" class="headerlink" title="远程连接Reids"></a>远程连接Reids</h2><p><code>redis-cli -h ip -a password</code> Ip填写阿里云外网IP  密码填写密码即可</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1930,7 +2046,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">43</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
