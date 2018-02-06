@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[部署Scrapyd]]></title>
+      <url>%2F2018%2F02%2F06%2F%E9%83%A8%E7%BD%B2Scrapyd%2F</url>
+      <content type="text"><![CDATA[Scrapyd http方式管理爬虫安装pip install scrapydpip install scrapyd-client 配置deploy在python环境下Scripts新建scrapyd-deploy.bat文件修改内容为:123@echo off&quot;C:\Users\jojo\Anaconda3\python.exe&quot; &quot;C:\Users\jojo\Anaconda3\Scripts\scrapyd-deploy&quot; %1 %2 %3 %4 %5 %6 %7 %8 %9 修改爬虫项目setting文件修改项目文件 scrapy.cfg123[deploy:zh]url = http://localhost:6800/project = project_name 发布工程到scrapydscrapyd-deploy zh -p project_name 启动爬虫curl http://localhost:6800/schedule.json -d project=PROJECT_NAME -d spider=SPIDER_NAME在localhost:6800/jobs中即可看到状态 停止爬虫curl http://localhost:6800/cancel.json -d project=PROJECT_NAME -d job=JOB_ID]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[Redis基本命令]]></title>
       <url>%2F2018%2F02%2F01%2FRedis%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%2F</url>
       <content type="text"><![CDATA[Redis基础命令字符串可以存储字符串 整数 浮点数 String命令 描述 SET key value 设置字符串key的值 GET key value 获取字符串key的值 DEL key value 删除字符串key的值 列表 List命令 描述 LPUSH key value value2 在列表key左端插入一个或多个值 RPUSH key value value2 在列表key右端插入一个或多个值 LPOP key 从列表key左端弹出一个值 RPOP key 从列表key右端弹出一个值 LINDEX key index 获取列表key中index位置的值 LRANGE key start end 获取列表key中位置在[start,end]的值 LLEN key 获取列表key的长度 注: LRANGE key 0 -1 获取全部值(负索引表示倒数第几个) 集合 Set命令 描述 SADD key member1 member2 向集合key中添加一个或多个成员 SREM key member1 member2 删除集合key中一个或多个成员 SMEMBERS key 获取集合key中所有成员 SCARD key 获取集合key中成员数量 SISMEMBER key member 判断member是否是集合key的成员 有序集合在有序集合中,每个成员都有一个分数,所有成员按给定分数在集合中有序排列 ZSet命令 描述 ZADD key score1 member1 score2 member2 向有序集合key中添加一个或多个成员 ZREM key member1,member2 删除有序集合key中一个或多个成员 ZRANG key start stop 获取有序集合key中所有成员位置在[start,stop]的值 ZRANGEBYSCORE key min max 获取有序集合key中分值在[min,max]范围的所有成员 哈希可以存储多个键值对 Hash命令 描述 HSET key field value 将哈希key的field字段赋值为value HDEL key field1 filed2 删除哈希key中一个或多个字段 HGET key filed 获取哈希key的field字段的值 HGETALL key 获取哈希key的所有字段的值]]></content>
