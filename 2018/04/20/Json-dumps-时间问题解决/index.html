@@ -87,16 +87,16 @@
 
 
 
-<meta name="description" content="碎碎念">
-<meta property="og:type" content="website">
-<meta property="og:title" content="分类">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+<meta name="description" content="Py读取MongoDB获得的时间是datetime.datetime(2017, 3, 21, 2, 11, 21)格式，无法用json.dumps转成Json。解决办法：是重写构造json类，遇到日期特殊处理，其余的用内置的就行。1234567891011import jsonimport datetimeclass DateEncoder(json.JSONEncoder):    def d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Json.dumps()时间问题解决">
+<meta property="og:url" content="http://yoursite.com/2018/04/20/Json-dumps-时间问题解决/index.html">
 <meta property="og:site_name" content="Kid">
-<meta property="og:description" content="碎碎念">
-<meta property="og:updated_time" content="2017-07-28T09:31:36.000Z">
+<meta property="og:description" content="Py读取MongoDB获得的时间是datetime.datetime(2017, 3, 21, 2, 11, 21)格式，无法用json.dumps转成Json。解决办法：是重写构造json类，遇到日期特殊处理，其余的用内置的就行。1234567891011import jsonimport datetimeclass DateEncoder(json.JSONEncoder):    def d">
+<meta property="og:updated_time" content="2018-04-20T07:52:40.528Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分类">
-<meta name="twitter:description" content="碎碎念">
+<meta name="twitter:title" content="Json.dumps()时间问题解决">
+<meta name="twitter:description" content="Py读取MongoDB获得的时间是datetime.datetime(2017, 3, 21, 2, 11, 21)格式，无法用json.dumps转成Json。解决办法：是重写构造json类，遇到日期特殊处理，其余的用内置的就行。1234567891011import jsonimport datetimeclass DateEncoder(json.JSONEncoder):    def d">
 
 
 
@@ -124,19 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/20/Json-dumps-时间问题解决/"/>
 
 
 
 
 
-  <title>
-  
-
-  
-    分类 | Kid
-  
-</title>
+  <title> Json.dumps()时间问题解决 | Kid </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -161,7 +155,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -280,25 +274,181 @@
             
 
   <div id="posts" class="posts-expand">
-  <header class="post-header">
+    
 
-	<h1 class="post-title" itemprop="name headline">分类</h1>
+  
 
+  
+  
+  
 
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/20/Json-dumps-时间问题解决/">
 
-</header>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kid">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kid">
+    </span>
 
     
-    
-      <div class="category-all-page">
-        <div class="category-all-title">
-            目前共计 12 个分类
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Json.dumps()时间问题解决
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-20T15:25:46Z">
+                2018-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python3爬虫/" itemprop="url" rel="index">
+                    <span itemprop="name">Python3爬虫</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/20/Json-dumps-时间问题解决/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/04/20/Json-dumps-时间问题解决/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
         </div>
-        <div class="category-all">
-          <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Elasticsearch/">Elasticsearch</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java爬虫/">Java爬虫</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python3爬虫/">Python3爬虫</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SpringBoot/">SpringBoot</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/底层机制/">底层机制</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/摘句/">摘句</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/碎碎念/">碎碎念</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">1</span></li></ul>
-        </div>
-      </div>
+      </header>
     
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Py读取MongoDB获得的时间是<code>datetime.datetime(2017, 3, 21, 2, 11, 21)</code>格式，无法用json.dumps转成Json。<br>解决办法：<br>是重写构造json类，遇到日期特殊处理，其余的用内置的就行。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> json</div><div class="line"><span class="keyword">import</span> datetime</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DateEncoder</span><span class="params">(json.JSONEncoder)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">default</span><span class="params">(self, obj)</span>:</span></div><div class="line">        <span class="keyword">if</span> isinstance(obj, datetime.datetime):</div><div class="line">            <span class="keyword">return</span> obj.strftime(<span class="string">'%Y-%m-%d %H:%M:%S'</span>)</div><div class="line">        <span class="keyword">elif</span> isinstance(obj, date):</div><div class="line">            <span class="keyword">return</span> obj.strftime(<span class="string">"%Y-%m-%d"</span>)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> json.JSONEncoder.default(self, obj)</div></pre></td></tr></table></figure></p>
+<p>调用：<br><code>json.dumps(self_data, cls=DateEncoder)</code></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/21/SpringBoot接口参数效验/" rel="next" title="SpringBoot接口参数效验">
+                <i class="fa fa-chevron-left"></i> SpringBoot接口参数效验
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -332,8 +482,8 @@ var duoshuoQuery = {short_name:"kid-geek"};
 
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="categories/index.html"
-           data-title="分类" data-url="http://yoursite.com/categories/index.html">
+      <div class="ds-thread" data-thread-key="2018/04/20/Json-dumps-时间问题解决/"
+           data-title="Json.dumps()时间问题解决" data-url="http://yoursite.com/2018/04/20/Json-dumps-时间问题解决/">
       </div>
     
   </div>    -->
@@ -552,6 +702,10 @@ var duoshuoQuery = {short_name:"kid-geek"};
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
