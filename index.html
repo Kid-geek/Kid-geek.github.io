@@ -295,6 +295,168 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/29/Pandas生成excel/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kid">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2019/01/29/Pandas生成excel/" itemprop="url">
+                  Pandas生成excel
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-29T15:58:57Z">
+                2019-01-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Data-Analysis/" itemprop="url" rel="index">
+                    <span itemprop="name">Data Analysis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/01/29/Pandas生成excel/" class="leancloud_visitors" data-flag-title="Pandas生成excel">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Dataframe写入excel"><a href="#Dataframe写入excel" class="headerlink" title="Dataframe写入excel"></a>Dataframe写入excel</h2><p><code>Dataframe.to_excel()</code><br>常用参数解析 </p>
+<ul>
+<li>excel_writer : 目标路径 </li>
+<li>sheet_name : 指定sheet名称 </li>
+<li>na_rep : 缺失值填充 </li>
+<li>columns : 选择输出的列 </li>
+<li>index : 是否忽略index</li>
+</ul>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">excel_name = &apos;test&apos;</div><div class="line">writer = pd.ExcelWriter(&apos;%s.xlsx&apos; % excel_name)</div><div class="line"># 将列明转成中文</div><div class="line">result=str(result).replace(&apos;brand_name&apos;,&apos;品牌名&apos;).replace(&apos;current_price&apos;,&apos;售价&apos;).replace(&apos;origin_price&apos;,&apos;原价&apos;).replace(&apos;product_id&apos;,&apos;商品ID&apos;)\</div><div class="line">                .replace(&apos;product_name&apos;,&apos;商品名&apos;).replace(&apos;product_url&apos;,&apos;商品Url&apos;).replace(&apos;second_category&apos;,&apos;二级类目&apos;).replace(&apos;third_category&apos;,&apos;三级类目&apos;)\</div><div class="line">                .replace(&apos;seller_count&apos;,&apos;销量&apos;).replace(&apos;sequence_num&apos;,&apos;抓取序号&apos;).replace(&apos;pic_url&apos;,&apos;图片Url&apos;).replace(&apos;keywords&apos;,&apos;搜索关键词&apos;)</div><div class="line"># 指定columns</div><div class="line">cols = [&apos;商品ID&apos;, &apos;商品名&apos;,&apos;品牌名&apos;, &apos;售价&apos;, &apos;原价&apos;, &apos;销量&apos;, &apos;抓取序号&apos;,&apos;搜索关键词&apos;,&apos;三级类目&apos;,&apos;二级类目&apos;,&apos;商品Url&apos;,&apos;图片Url&apos;]</div><div class="line">df1 = pd.read_json(json.dumps(result_list))</div><div class="line">df1 = df1.drop(columns=[&apos;_id&apos;], axis=1)</div><div class="line">df1.to_excel(writer, sheet_name=&apos;test&apos;,columns=cols, index=False)</div><div class="line">writer.save()</div><div class="line">writer.close()</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/01/2019/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1869,165 +2031,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/01/Scrapy-redis分布式爬虫/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kid">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kid">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/02/01/Scrapy-redis分布式爬虫/" itemprop="url">
-                  Scrapy-redis分布式爬虫
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T14:48:25Z">
-                2018-02-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python3爬虫/" itemprop="url" rel="index">
-                    <span itemprop="name">Python3爬虫</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/02/01/Scrapy-redis分布式爬虫/" class="leancloud_visitors" data-flag-title="Scrapy-redis分布式爬虫">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="用Redis做队列处理实现分布式"><a href="#用Redis做队列处理实现分布式" class="headerlink" title="用Redis做队列处理实现分布式"></a>用Redis做队列处理实现分布式</h1><h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><p><img src="/images/Scrapy-redis原理.png" alt="“Scrapy-redis框架流程图”"><br>用Redis的ZSet有序队列做调度器来集中处理Requests</p>
-<h2 id="安装Scrapy-redis"><a href="#安装Scrapy-redis" class="headerlink" title="安装Scrapy-redis"></a>安装Scrapy-redis</h2><p>直接<code>pip install scrapy-redis</code>即可</p>
-<h2 id="创建Spider继承自RedisSpider"><a href="#创建Spider继承自RedisSpider" class="headerlink" title="创建Spider继承自RedisSpider"></a>创建Spider继承自RedisSpider</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">JobboleSpider</span><span class="params">(RedisSpider)</span>:</span></div><div class="line">    name = <span class="string">'jobbole'</span></div><div class="line">    allowed_domains = [<span class="string">'blog.jobbole.com'</span>]</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(self, response)</span>:</span></div><div class="line">        <span class="comment">#编写抓取规则</span></div><div class="line">        <span class="keyword">pass</span></div></pre></td></tr></table></figure>
-<h2 id="settings-py配置"><a href="#settings-py配置" class="headerlink" title="settings.py配置"></a><code>settings.py</code>配置</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">REDIS_URL=<span class="string">'redis://:password@host'</span>    <span class="comment"># 连接Redis</span></div><div class="line"><span class="comment"># 使用scrapy_redis的调度器替换原版调度器</span></div><div class="line">SCHEDULER=<span class="string">'scrapy_redis.scheduler.Scheduler'</span></div><div class="line"><span class="comment">#使用scrapy_redis的RFPDupeFilter作去重过滤器</span></div><div class="line">DUPEFILTER_CLASS=<span class="string">'scrapy_redis.dupefilter.RFPDupeFilter'</span></div><div class="line"></div><div class="line">ITEM_PIPELINES=&#123;</div><div class="line">    <span class="comment"># 'scrapy_redis.pipelines.RedisPipeline':300    # 可选项  是否把ITEM存储到Redis中</span></div><div class="line">&#125;</div><div class="line"><span class="comment">#爬虫停止后,保留/清理Redis中的请求队列以及去重集合</span></div><div class="line"><span class="comment"># TRUE:保留 FALSE:清理  默认为FALSE</span></div><div class="line">SCHEDULER_PERSIST=TRUE</div></pre></td></tr></table></figure>
-<h2 id="打开所有爬虫-部署Redis队列"><a href="#打开所有爬虫-部署Redis队列" class="headerlink" title="打开所有爬虫,部署Redis队列"></a>打开所有爬虫,部署Redis队列</h2><p>打开所有部署到各个服务器上的爬虫,进入队列等待状态.<br>连接Redis服务器,输入<code>lpush spider_name:start_urls &#39;http://www.baidu.com&#39;</code>既可开始抓取</p>
-<h2 id="编写代码读取Redis中保存的数据"><a href="#编写代码读取Redis中保存的数据" class="headerlink" title="编写代码读取Redis中保存的数据"></a>编写代码读取Redis中保存的数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> redis</div><div class="line"><span class="keyword">import</span> json</div><div class="line">ITEM_KEYS=<span class="string">'spider_name:items'</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">process_item</span><span class="params">(item)</span>:</span></div><div class="line">  <span class="comment">#添加处理数据的代码</span></div><div class="line">  <span class="keyword">pass</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">  r=redis.StrictRedis(host=<span class="string">'host'</span>,port=<span class="number">6379</span>)</div><div class="line">  <span class="keyword">for</span> _ <span class="keyword">in</span> range(r.llen(ITEM_KEYS)):</div><div class="line">    data=r.lpop(ITEM_KEYS)</div><div class="line">    item=json.loads(data.decode(<span class="string">'utf-8'</span>))</div><div class="line">    process_item(item)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">  main()</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2077,7 +2080,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-count">52</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2088,7 +2091,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
