@@ -295,6 +295,335 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/01/Redis基本命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kid">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/github.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/02/01/Redis基本命令/" itemprop="url">
+                  Redis基本命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T15:52:51Z">
+                2018-02-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/02/01/Redis基本命令/" class="leancloud_visitors" data-flag-title="Redis基本命令">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  471 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Redis基础命令"><a href="#Redis基础命令" class="headerlink" title="Redis基础命令"></a>Redis基础命令</h1><h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>可以存储字符串  整数  浮点数   </p>
+<table>
+<thead>
+<tr>
+<th>String命令</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SET key value</code></td>
+<td style="text-align:center">设置字符串key的值</td>
+</tr>
+<tr>
+<td><code>GET key value</code></td>
+<td style="text-align:center">获取字符串key的值</td>
+</tr>
+<tr>
+<td><code>DEL key value</code></td>
+<td style="text-align:center">删除字符串key的值</td>
+</tr>
+</tbody>
+</table>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><table>
+<thead>
+<tr>
+<th>List命令</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LPUSH key value value2</code></td>
+<td style="text-align:center">在列表key左端插入一个或多个值</td>
+</tr>
+<tr>
+<td><code>RPUSH key value value2</code></td>
+<td style="text-align:center">在列表key右端插入一个或多个值</td>
+</tr>
+<tr>
+<td><code>LPOP key</code></td>
+<td style="text-align:center">从列表key左端弹出一个值</td>
+</tr>
+<tr>
+<td><code>RPOP key</code></td>
+<td style="text-align:center">从列表key右端弹出一个值</td>
+</tr>
+<tr>
+<td><code>LINDEX key index</code></td>
+<td style="text-align:center">获取列表key中index位置的值</td>
+</tr>
+<tr>
+<td><code>LRANGE key start end</code></td>
+<td style="text-align:center">获取列表key中位置在[start,end]的值</td>
+</tr>
+<tr>
+<td><code>LLEN key</code></td>
+<td style="text-align:center">获取列表key的长度</td>
+</tr>
+</tbody>
+</table>
+<p>注: <code>LRANGE key 0 -1</code> 获取全部值(负索引表示倒数第几个)</p>
+<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><table>
+<thead>
+<tr>
+<th>Set命令</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SADD key member1 member2</code></td>
+<td style="text-align:center">向集合key中添加一个或多个成员</td>
+</tr>
+<tr>
+<td><code>SREM key member1 member2</code></td>
+<td style="text-align:center">删除集合key中一个或多个成员</td>
+</tr>
+<tr>
+<td><code>SMEMBERS key</code></td>
+<td style="text-align:center">获取集合key中所有成员</td>
+</tr>
+<tr>
+<td><code>SCARD key</code></td>
+<td style="text-align:center">获取集合key中成员数量</td>
+</tr>
+<tr>
+<td><code>SISMEMBER key member</code></td>
+<td style="text-align:center">判断member是否是集合key的成员</td>
+</tr>
+</tbody>
+</table>
+<h2 id="有序集合"><a href="#有序集合" class="headerlink" title="有序集合"></a>有序集合</h2><p>在有序集合中,每个成员都有一个分数,所有成员按给定分数在集合中有序排列</p>
+<table>
+<thead>
+<tr>
+<th>ZSet命令</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ZADD key score1 member1 score2 member2</code></td>
+<td style="text-align:center">向有序集合key中添加一个或多个成员</td>
+</tr>
+<tr>
+<td><code>ZREM key member1,member2</code></td>
+<td style="text-align:center">删除有序集合key中一个或多个成员</td>
+</tr>
+<tr>
+<td><code>ZRANG key start stop</code></td>
+<td style="text-align:center">获取有序集合key中所有成员位置在[start,stop]的值</td>
+</tr>
+<tr>
+<td><code>ZRANGEBYSCORE key min max</code></td>
+<td style="text-align:center">获取有序集合key中分值在[min,max]范围的所有成员</td>
+</tr>
+</tbody>
+</table>
+<h2 id="哈希"><a href="#哈希" class="headerlink" title="哈希"></a>哈希</h2><p>可以存储多个键值对</p>
+<table>
+<thead>
+<tr>
+<th>Hash命令</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HSET key field value</code></td>
+<td style="text-align:center">将哈希key的field字段赋值为value</td>
+</tr>
+<tr>
+<td><code>HDEL key field1 filed2</code></td>
+<td style="text-align:center">删除哈希key中一个或多个字段</td>
+</tr>
+<tr>
+<td><code>HGET key filed</code></td>
+<td style="text-align:center">获取哈希key的field字段的值</td>
+</tr>
+<tr>
+<td><code>HGETALL key</code></td>
+<td style="text-align:center">获取哈希key的所有字段的值</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/01/Scrapy-redis分布式爬虫/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -388,6 +717,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  278 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
           
 
           
@@ -548,6 +907,36 @@
           
 
           
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  82 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -701,6 +1090,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  209 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
           
 
           
@@ -858,6 +1277,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  337 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
           
 
           
@@ -1020,6 +1469,36 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  458 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
           
 
           
@@ -1186,6 +1665,36 @@
           
 
           
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  316 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1346,6 +1855,36 @@
           
 
           
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1.1k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  6 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1504,6 +2043,36 @@
           
 
           
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  108 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1661,6 +2230,36 @@
           
 
           
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  167 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1684,176 +2283,6 @@
 <li>搭建NodeJS环境 <a href="http://nodejs.cn/download/" target="_blank" rel="external">地址</a></li>
 <li>安装head插件进行管理  <a href="https://github.com/mobz/elasticsearch-head" target="_blank" rel="external">地址</a><br>直接从github搜索,下完解压缩<br>先安装cnpm <code>npm install -g cnpm --registry=https://registry.npm.taobao.org</code><br>然后 在head目录下命令行输入 <code>cnpm install</code>  <code>cnpm run start</code> 即可, 端口号<code>9100</code></li>
 <li>安装kibana 在官网下载对应版本为 5.1.1 <a href="https://www.elastic.co/downloads/past-releases" target="_blank" rel="external">地址</a><br>下完后解压即可 在bin目录下直接用命令行运行<code>kibana.bat</code>即可 端口号<code>5601</code></li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/17/Linxu的文件权限和目录配置/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kid">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/github.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kid">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/17/Linxu的文件权限和目录配置/" itemprop="url">
-                  Linxu的文件权限和目录配置
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-17T14:06:41Z">
-                2018-01-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/01/17/Linxu的文件权限和目录配置/" class="leancloud_visitors" data-flag-title="Linxu的文件权限和目录配置">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>读书笔记</p>
-</blockquote>
-<h1 id="Linux文件权限和目录配置"><a href="#Linux文件权限和目录配置" class="headerlink" title="Linux文件权限和目录配置"></a>Linux文件权限和目录配置</h1><h2 id="Linux文件属性"><a href="#Linux文件属性" class="headerlink" title="Linux文件属性"></a>Linux文件属性</h2><p><code>ls -l</code>命令查看详细内容<br><code>-rw-r--r--   1     root      root      1023      Sep  4  18:25  test.txt</code>  分别为<br>  [权限]     [连接] [所有者]  [用户组]  [文件容量]   [修 改 日 期]   [文件名]</p>
-<p>权限: 第一个字符代表这个文件是”目录、文件或链接文件等”<br>· [d] : 目录<br>· [-] : 文件<br>· [i] : 连接文件<br>· [b] : 设备文件里面的可供存储的接口设备<br>· [c] : 表示设备文件里面的串行端口设备, 例如键盘鼠标等</p>
-<h1 id="权限与命令间的关系"><a href="#权限与命令间的关系" class="headerlink" title="权限与命令间的关系"></a>权限与命令间的关系</h1><ol>
-<li><p>让用户能进入某目录成为’可工作目录’的基本权限是什么<br>· 可使用的命令: 例如cd等切换工作目录的命令<br>· 目录所需权限: 用户对这个目录至少需要 x 的权限<br>· 额外需求: 如果用户想用ls查阅,则用户对此目录还需有 r 的权限</p>
-</li>
-<li><p>用户在某个目录内读取一个文件的基本权限是什么<br>· 可使用的命令: 例如 cat more less等<br>· 目录所需权限: 用户对这个目录至少需要具有 x 权限<br>· 文件所需权限: 用户对文件至少需要 r 的权限</p>
-</li>
-<li><p>让用户修改一个文件的基本权限是什么<br>· 可使用的命令: 例如 nano 或 vi 等<br>· 目录所需权限: 用户对这个目录至少需要具有 x 权限<br>· 文件所需权限: 用户对文件至少需要 r,w 的权限</p>
-</li>
-<li><p>让一个用户可以创建一个文件的基本权限是什么<br>· 目录所需权限: 用户在该目录至少具有 w x 的权限 重点在w</p>
-</li>
-<li><p>让用户进入某目录并执行该目录下某个命令的基本权限是什么<br>· 目录所需权限: 用户对这个目录至少需要具有 x 权限<br>· 文件所需权限: 用户对文件至少需要 x 的权限</p>
-</li>
 </ol>
 
           
@@ -1938,7 +2367,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-count">53</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
